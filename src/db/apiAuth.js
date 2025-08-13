@@ -10,3 +10,7 @@ export async function login({email, password}){
 
     return data;
 }
+
+export async function getCurrentUser() {
+   const {data: session, error} = await supabase.auth.getSession()
+}
