@@ -4,6 +4,9 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { LinkIcon, LogOut } from "lucide-react";
 import { UrlState } from "@/context";
+import useFetch from "./hooks/useFetch";
+import { BarLoader } from "react-spinners";
+import { logout } from "@/db/apiAuth";
 
 const Header = () => {
 
@@ -11,7 +14,11 @@ const Header = () => {
 
     const {user, fetchUser} = UrlState(); 
 
-  return <nav className="py-4 flex justify-between items-center">
+    const {loading, fn: fnLogout} = useFetch(logout);
+
+  return (
+    <>
+    <nav className="py-4 flex justify-between items-center">
     <Link to="/">
         <img src="/url-shortener.jpg" className="h-16" alt="URL-Shortener" />
     </Link>
@@ -36,7 +43,10 @@ const Header = () => {
                     <DropdownMenuItem className="text-red-400">
                         <LogOut className="mr-2 h-4 w-4" />
                         <span onClick={() => {
-                            navigate("/")
+                            fnLogout().then(() => {
+                                fetchUser();
+                                navigate("/");
+                            });
                         }}
                         >Logout</span>
                     </DropdownMenuItem>
@@ -44,9 +54,12 @@ const Header = () => {
                 </DropdownMenu>
             )
         }
-        
     </div>
   </nav>
+  {loading && <BarLoader className="mb-4" width={"100%"} color="#36d7b7"/>}
+  </>
+  )
 }
+
 
 export default Header;
