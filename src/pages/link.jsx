@@ -13,6 +13,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import Location from "@/components/location-stats";
+import Device from "@/components/device-stats";
 
 const Link = () => {
 
@@ -123,7 +125,11 @@ const Link = () => {
              </Card>
 
              <CardTitle>Location Data</CardTitle>
+             <Location stats={stats} />
+
              <CardTitle>Device Info</CardTitle>
+             <Device stats={stats}/>
+             
           </CardContent>
           ): (
             <CardContent>
