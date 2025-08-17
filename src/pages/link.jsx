@@ -58,6 +58,8 @@ const Link = () => {
     link = url?.custom_url ? url?.custom_url : url?.short_url;
   }
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   return (
     <>
       {loading || loadingStats && (
@@ -67,11 +69,11 @@ const Link = () => {
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-6xl font-extrabold hover:underline cursor-pointer">{url?.title}</span>
           <a 
-          href={`https://cuttrim.netlify.app/${link}`} 
+          href={`${baseUrl}/${link}`} 
           target="_blank"
           className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            https://cuttrim.netlify.app/{link}
+            Short Url : {baseUrl}/{link}
           </a>
 
           <a 
@@ -79,6 +81,7 @@ const Link = () => {
             target="_blank"
             className="flex items-center gap-1 hover:underline cursor-pointer"
             >
+            Originial Link : 
             <LinkIcon className="p-1" />
             {url?.original_url}
           </a>
@@ -89,7 +92,7 @@ const Link = () => {
           <div className="flex gap-2">
             <Button
                 variant="ghost"
-                onClick={() => navigator.clipboard.writeText(`https://cuttrim.netlify.app/${url?.short_url}`)}
+                onClick={() => navigator.clipboard.writeText(`${baseUrl}/${link}`)}
                 >
                 <Copy />
             </Button>

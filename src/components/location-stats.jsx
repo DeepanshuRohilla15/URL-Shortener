@@ -32,7 +32,6 @@ export default function Location({stats}) {
             <Line type="monotone" dataKey="count" stroke="#8884d8" />
           </LineChart>
       </ResponsiveContainer>
-        
       
     </div>
      
