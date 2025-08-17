@@ -35,7 +35,7 @@ const LinkCard = ({url, fetchUrls}) => {
         </span>
 
         <span className="text-2xl text-blue-400 font-bold hover:underline cursor-pointer">
-            https://trimmer.in/{url?.custom_url ? url?.custom_url : url?.short_url}
+            https://Cuttrim/{url?.custom_url ? url?.custom_url : url?.short_url}
         </span>
 
         <span className="flex items-center gap-1 hover:underline cursor:pointer">
@@ -50,7 +50,7 @@ const LinkCard = ({url, fetchUrls}) => {
         <div className="flex gap-2">
             <Button
                 variant="ghost"
-                onClick={() => navigator.clipboard.writeText(`https://trimmer.in/${url?.short_url}`)}
+                onClick={() => navigator.clipboard.writeText(`https://cuttrim/${url?.short_url}`)}
                 >
                 <Copy />
             </Button>
