@@ -1,5 +1,6 @@
 import useFetch from "@/components/hooks/useFetch"
-import { getLongUrl, storeClicks } from "@/db/apiUrls"
+import { storeClicks } from "@/db/apiClicks"
+import { getLongUrl } from "@/db/apiUrls"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { BarLoader } from "react-spinners"
