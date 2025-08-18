@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
-import { Copy, Delete, Download, Trash } from "lucide-react"
+import { Copy, Download, Trash } from "lucide-react"
 import useFetch from "./hooks/useFetch"
 import { deleteUrl } from "@/db/apiUrls"
 import { BeatLoader } from "react-spinners"
@@ -35,7 +35,7 @@ const LinkCard = ({url, fetchUrls}) => {
         </span>
 
         <span className="text-2xl text-blue-400 font-bold hover:underline cursor-pointer">
-            https://trimrr.netlify.app/{url?.custom_url ? url?.custom_url : url?.short_url}
+            https://trimmrrrr.netlify.app/{url?.custom_url ? url?.custom_url : url?.short_url}
         </span>
 
         <span className="flex items-center gap-1 hover:underline cursor:pointer">
@@ -50,7 +50,7 @@ const LinkCard = ({url, fetchUrls}) => {
         <div className="flex gap-2">
             <Button
                 variant="ghost"
-                onClick={() => navigator.clipboard.writeText(`https://trimrr.netlify.app/${url?.short_url}`)}
+                onClick={() => navigator.clipboard.writeText(`https://trimmrrrr.netlify.app/${url?.short_url}`)}
                 >
                 <Copy />
             </Button>

@@ -71,11 +71,11 @@ const Link = () => {
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-6xl font-extrabold hover:underline cursor-pointer">{url?.title}</span>
           <a 
-          href={`https://trimrr.netlify.app/${link}`} 
+          href={`https://trimmrrrr.netlify.app/${link}`} 
           target="_blank"
           className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            https://trimrr.netlify.app/{link}
+            https://trimmrrrr.netlify.app/{link}
           </a>
 
           <a 
@@ -93,7 +93,7 @@ const Link = () => {
           <div className="flex gap-2">
             <Button
                 variant="ghost"
-                onClick={() => navigator.clipboard.writeText(`https://trimrr.netlify.app/${link}`)}
+                onClick={() => navigator.clipboard.writeText(`https://trimmrrrr.netlify.app/${link}`)}
                 >
                 <Copy />
             </Button>
