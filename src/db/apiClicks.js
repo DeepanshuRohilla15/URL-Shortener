@@ -32,7 +32,7 @@ export const storeClicks = async ({ id, originalUrl}) => {
          device: device
       })
 
-      window.location.href= originalUrl;
+      window.location.href = originalUrl;
 
    } catch (error) {
       console.error("Error recording click:", error);
