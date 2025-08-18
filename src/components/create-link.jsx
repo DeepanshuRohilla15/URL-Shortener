@@ -75,11 +75,9 @@ const CreateLink = () => {
         });
 
         setErrors(newErrors);
-
+        
     }
   }
-
-   const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
   return (
@@ -97,7 +95,7 @@ const CreateLink = () => {
                 <DialogTitle className="font-bold text-2xl">Create New</DialogTitle>
                 </DialogHeader>
 
-                {formValues?.customUrl && ( <QRCode value={`${baseUrl}/${formValues?.customUrl}`} size={250} ref={ref} />)}
+                {formValues?.longUrl && ( <QRCode value={formValues?.longUrl} size={250} ref={ref} />)}
 
                 <Input
                     id="title"
@@ -117,7 +115,7 @@ const CreateLink = () => {
                {errors.longUrl && <Error message={errors.longUrl} />}
 
                 <div className="flex items-center gap-2">
-                    <Card className="p-2">{baseUrl}</Card> /
+                    <Card className="p-2">trimrr.netlify.app</Card> /
                     <Input 
                         id="customUrl" 
                         placeholder="Custom Link (optional)"

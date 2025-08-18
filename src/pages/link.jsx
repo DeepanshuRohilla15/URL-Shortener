@@ -47,6 +47,10 @@ const Link = () => {
     fnStats();
   }, []);
 
+  useEffect(() => {
+    if(!error && loading === false) fnStats();
+  }, [loading, error])
+
   if(error)
   {
     navigate("/dashboard")
@@ -58,8 +62,6 @@ const Link = () => {
     link = url?.custom_url ? url?.custom_url : url?.short_url;
   }
 
-  const baseUrl = import.meta.env.VITE_BASE_URL;
-
   return (
     <>
       {loading || loadingStats && (
@@ -69,11 +71,11 @@ const Link = () => {
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-6xl font-extrabold hover:underline cursor-pointer">{url?.title}</span>
           <a 
-          href={`${baseUrl}/${link}`} 
+          href={`https://trimrr.netlify.app/${link}`} 
           target="_blank"
           className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            Short Url : {baseUrl}/{link}
+            https://trimrr.netlify.app/{link}
           </a>
 
           <a 
@@ -81,7 +83,6 @@ const Link = () => {
             target="_blank"
             className="flex items-center gap-1 hover:underline cursor-pointer"
             >
-            Originial Link : 
             <LinkIcon className="p-1" />
             {url?.original_url}
           </a>
@@ -92,14 +93,22 @@ const Link = () => {
           <div className="flex gap-2">
             <Button
                 variant="ghost"
-                onClick={() => navigator.clipboard.writeText(`${baseUrl}/${link}`)}
+                onClick={() => navigator.clipboard.writeText(`https://trimrr.netlify.app/${link}`)}
                 >
                 <Copy />
             </Button>
             <Button variant="ghost" onClick={downloadImage}>
                 <Download />
             </Button>
-            <Button variant="ghost" onClick={() => fnDelete()}>
+            <Button 
+              variant="ghost" 
+              onClick={() => 
+              fnDelete().then(() => {
+                  navigate("/dashboard")
+              })
+              }
+              disable={loadingDelete}
+              >
                 {loadingDelete ? <BeatLoader size={5} color="white"/> : <Trash />}
             </Button>
           </div>
